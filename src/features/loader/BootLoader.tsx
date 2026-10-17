@@ -149,7 +149,6 @@ export function BootLoader() {
       <div className="boot-stage">
         <svg className="boot-ring" viewBox="0 0 100 100" aria-hidden="true">
           <circle className="boot-ring-track" cx="50" cy="50" r={RING_RADIUS} />
-          <circle className="boot-ring-spinner" cx="50" cy="50" r={RING_RADIUS} pathLength={100} />
           <circle
             className="boot-ring-progress"
             cx="50"

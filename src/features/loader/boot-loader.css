@@ -115,21 +115,6 @@ html[data-booted] .boot-overlay {
   stroke-width: 0.35;
 }
 
-.boot-ring-spinner {
-  fill: none;
-  stroke: rgb(255 255 255 / 0.55);
-  stroke-width: 0.35;
-  stroke-dasharray: 22 78;
-  transform-origin: 50px 50px;
-  animation: boot-spin 1.2s linear infinite;
-}
-
-@keyframes boot-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .boot-ring-progress {
   fill: none;
   stroke: var(--accent);
@@ -462,7 +447,6 @@ html[data-booted] .boot-overlay {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .boot-ring-spinner,
   .boot-word,
   .boot-word-layer {
     animation: none;
