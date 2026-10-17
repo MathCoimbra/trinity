@@ -28,7 +28,7 @@ export function ProductCard({ product, quantityInCart, onOpen, onQuickAdd }: Pro
         )}
         <div className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-3">
           {discount && (
-            <span className="rounded bg-accent px-1.5 py-0.5 text-[0.65rem] font-bold text-white">-{discount}%</span>
+            <span className="rounded bg-accent px-1.5 py-0.5 text-[0.65rem] font-bold text-accent-fg">-{discount}%</span>
           )}
           <span className="text-base font-semibold">{formatBRL(product.priceCents)}</span>
           {product.compareAtCents && (
@@ -46,7 +46,7 @@ export function ProductCard({ product, quantityInCart, onOpen, onQuickAdd }: Pro
           className="object-cover transition duration-500 group-hover:scale-105"
         />
         {quantityInCart > 0 && (
-          <span className="absolute left-1.5 top-1.5 z-10 grid min-w-6 place-items-center rounded-full bg-accent px-1.5 py-0.5 text-[0.7rem] font-bold text-white">
+          <span className="absolute left-1.5 top-1.5 z-10 grid min-w-6 place-items-center rounded-full bg-accent px-1.5 py-0.5 text-[0.7rem] font-bold text-accent-fg">
             {quantityInCart}
           </span>
         )}
@@ -54,7 +54,7 @@ export function ProductCard({ product, quantityInCart, onOpen, onQuickAdd }: Pro
           type="button"
           onClick={() => onQuickAdd(product)}
           aria-label={`Adicionar ${product.name} ao carrinho`}
-          className="absolute bottom-1.5 right-1.5 z-10 grid size-10 place-items-center rounded-full bg-fg text-xl text-bg shadow-lg transition hover:bg-accent hover:text-white active:scale-90"
+          className="absolute bottom-1.5 right-1.5 z-10 grid size-10 place-items-center rounded-full bg-fg text-xl text-bg shadow-lg transition hover:bg-accent hover:text-accent-fg active:scale-90"
         >
           <PlusIcon />
         </button>

@@ -9,14 +9,14 @@ export const bootedFlagScript = `try{if(sessionStorage.getItem("${BOOTED_STORAGE
 
 const RING_RADIUS = 48;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
-const MIN_DURATION_MS = 1900;
+const MIN_DURATION_MS = 3600;
 const REDUCED_MOTION_DURATION_MS = 500;
-const EXIT_DURATION_MS = 600;
+const EXIT_DURATION_MS = 800;
 const PROGRESS_CAP_BEFORE_LOAD = 0.9;
 
 type Phase = "loading" | "exiting" | "done";
 
-const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 
 function markBooted() {
   try {
@@ -45,7 +45,7 @@ export function BootLoader() {
     document.body.style.overflow = "hidden";
 
     const tick = (now: number) => {
-      const timeProgress = easeOutCubic(Math.min((now - start) / duration, 1));
+      const timeProgress = easeInOutSine(Math.min((now - start) / duration, 1));
       const next = pageLoaded ? timeProgress : Math.min(timeProgress, PROGRESS_CAP_BEFORE_LOAD);
       setProgress(next);
 

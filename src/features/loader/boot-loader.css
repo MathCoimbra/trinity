@@ -6,8 +6,8 @@
   place-items: center;
   background: #000;
   transition:
-    opacity 0.6s ease,
-    visibility 0.6s ease;
+    opacity 0.8s ease,
+    visibility 0.8s ease;
 }
 
 html[data-booted] .boot-overlay {
@@ -29,7 +29,7 @@ html[data-booted] .boot-overlay {
   aspect-ratio: 1;
   display: grid;
   place-items: center;
-  transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 .boot-ring {
@@ -48,8 +48,9 @@ html[data-booted] .boot-overlay {
 
 .boot-ringProgress {
   fill: none;
-  stroke: #e9e9ec;
-  stroke-width: 0.5;
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 1.5px var(--accent));
+  stroke-width: 0.8;
   stroke-linecap: round;
 }
 
@@ -69,19 +70,19 @@ html[data-booted] .boot-overlay {
 
 .boot-face {
   opacity: 0;
-  animation: boot-faceIn 0.9s steps(1, end) forwards;
+  animation: boot-faceIn 1.3s steps(1, end) forwards;
 }
 
 .boot-face:nth-child(1) {
-  animation-delay: 0.15s;
+  animation-delay: 0.3s;
 }
 
 .boot-face:nth-child(2) {
-  animation-delay: 0.35s;
+  animation-delay: 0.75s;
 }
 
 .boot-face:nth-child(3) {
-  animation-delay: 0.55s;
+  animation-delay: 1.2s;
 }
 
 @keyframes boot-faceIn {
@@ -121,8 +122,8 @@ html[data-booted] .boot-overlay {
   color: #f4f4f5;
   opacity: 0;
   animation:
-    boot-wordIn 0.2s linear 0.7s forwards,
-    boot-jitter 2.4s steps(1, end) 0.7s infinite;
+    boot-wordIn 0.3s linear 1.8s forwards,
+    boot-jitter 2.4s steps(1, end) 1.8s infinite;
 }
 
 .boot-word::before,
@@ -137,14 +138,14 @@ html[data-booted] .boot-overlay {
 .boot-word::before {
   color: var(--accent);
   transform: translate(-2px, 0);
-  animation: boot-sliceA 1.8s steps(1, end) 0.7s infinite;
+  animation: boot-sliceA 1.8s steps(1, end) 1.8s infinite;
   mix-blend-mode: screen;
 }
 
 .boot-word::after {
-  color: #7dd3fc;
+  color: #ffd9a8;
   transform: translate(2px, 0);
-  animation: boot-sliceB 1.5s steps(1, end) 0.7s infinite;
+  animation: boot-sliceB 1.5s steps(1, end) 1.8s infinite;
   mix-blend-mode: screen;
 }
 

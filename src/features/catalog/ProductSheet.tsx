@@ -32,7 +32,7 @@ function ProductDetails({ product }: { product: Product }) {
       <div className="space-y-3 px-5 py-5">
         <h3 className="font-display text-3xl leading-none tracking-wide">{product.name}</h3>
         <div className="flex items-center gap-2">
-          {discount && <span className="rounded bg-accent px-1.5 py-0.5 text-xs font-bold text-white">-{discount}%</span>}
+          {discount && <span className="rounded bg-accent px-1.5 py-0.5 text-xs font-bold text-accent-fg">-{discount}%</span>}
           <span className="text-xl font-semibold">{formatBRL(product.priceCents)}</span>
           {product.compareAtCents && (
             <span className="text-sm text-muted line-through">{formatBRL(product.compareAtCents)}</span>
@@ -55,7 +55,7 @@ function AddFooter({ product, onAdd }: { product: Product; onAdd: ProductSheetPr
       <button
         type="button"
         onClick={() => onAdd(product, quantity)}
-        className="flex h-12 flex-1 items-center justify-between rounded-full bg-accent px-5 text-sm font-semibold uppercase tracking-wide text-white transition hover:brightness-110 active:scale-[0.98]"
+        className="flex h-12 flex-1 items-center justify-between rounded-full bg-accent px-5 text-sm font-semibold uppercase tracking-wide text-accent-fg transition hover:brightness-110 active:scale-[0.98]"
       >
         <span>Adicionar</span>
         <span className="tabular-nums">{formatBRL(product.priceCents * quantity)}</span>

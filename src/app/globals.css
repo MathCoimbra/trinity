@@ -8,8 +8,9 @@
   --line-strong: #3a3a43;
   --fg: #f2f2f3;
   --muted: #9a9aa4;
-  --accent: #ed145b;
-  --accent-soft: rgb(237 20 91 / 0.14);
+  --accent: #ff7a00;
+  --accent-fg: #160a00;
+  --accent-soft: rgb(255 122 0 / 0.14);
   --success: #25d366;
   color-scheme: dark;
 }
@@ -23,6 +24,7 @@
   --color-fg: var(--fg);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
   --color-success: var(--success);
   --font-sans: var(--font-poppins);
@@ -41,7 +43,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-fg);
 }
 
 .no-scrollbar {

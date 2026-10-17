@@ -15,11 +15,11 @@ export function CartBar({ itemCount, itemsCents, onOpen }: CartBarProps) {
       <button
         type="button"
         onClick={onOpen}
-        className="pointer-events-auto mx-auto flex h-14 w-full max-w-lg items-center gap-3 rounded-full bg-accent pl-2 pr-5 text-white shadow-2xl shadow-accent/30 transition hover:brightness-110 active:scale-[0.98]"
+        className="pointer-events-auto mx-auto flex h-14 w-full max-w-lg items-center gap-3 rounded-full bg-accent pl-2 pr-5 text-accent-fg shadow-2xl shadow-accent/30 transition hover:brightness-110 active:scale-[0.98]"
       >
         <span className="relative grid size-10 place-items-center rounded-full bg-black/25 text-xl">
           <BagIcon />
-          <span className="absolute -right-1 -top-1 grid min-w-5 place-items-center rounded-full bg-white px-1 text-[0.65rem] font-bold text-accent">
+          <span className="absolute -right-1 -top-1 grid min-w-5 place-items-center rounded-full bg-bg px-1 text-[0.65rem] font-bold text-accent">
             {itemCount}
           </span>
         </span>
