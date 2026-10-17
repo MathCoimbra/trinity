@@ -1,0 +1,32 @@
+# Trinity Hookah — loja
+
+Loja online da Trinity Hookah (tabacaria/narguilé), substituindo o cardápio da Ola Click (https://trinity-hookah.ola.click/products). Público majoritariamente mobile.
+
+## Stack e comandos
+
+- Next.js (App Router) + TypeScript + Tailwind CSS, Zustand para o carrinho, Vitest para testes.
+- `npm run dev` · `npm run build` · `npm run lint` · `npm test`
+- Deploy na Vercel (push na `main` = produção; branches geram previews).
+
+## Arquitetura
+
+Organização por feature em `src/features/*` (loader, catalog, cart, checkout), UI genérica em `src/components/ui`, utilitários em `src/lib`.
+
+- Componentes nunca importam `src/data/*.json` diretamente: dados do catálogo passam por `src/lib/catalog/repository.ts`, para que a fonte (JSON hoje, banco no futuro) possa mudar sem tocar na UI.
+- Regras de negócio (totais, descontos, mensagem do WhatsApp) ficam em funções puras, sem React, com teste unitário.
+- Configurações da loja (WhatsApp do dono, endereço, pedido mínimo, taxa de entrega, redes sociais) vivem em `src/data/store.json`; nada disso hardcoded em componente.
+
+## Pedidos
+
+Sem pagamento online por enquanto. O checkout monta uma mensagem com o pedido e abre o WhatsApp do dono (`wa.me`). Não integrar gateway de pagamento sem pedido explícito.
+
+## Design
+
+- Mistura do cardápio da Ola Click (estrutura: abas de categoria sticky, cards com foto/preço/desconto) com a identidade da FIAP (fundo preto, títulos condensados em caixa alta, linhas finas, acento magenta).
+- Mobile-first: validar em 375px antes de desktop; alvos de toque ≥ 44px; respeitar `safe-area-inset`.
+- Cores só via tokens em `src/app/globals.css` (acento `--accent: #ed145b`); não usar hex solto nos componentes.
+- Animações respeitam `prefers-reduced-motion`.
+
+## Branches
+
+Temas em uso: `chore/setup` (tooling/infra), `feat/loja` (vitrine, carrinho, checkout), `chore/deploy` (Vercel, SEO, domínio). Reaproveitar a branch do tema em vez de criar novas.
