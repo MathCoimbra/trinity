@@ -1,35 +1,88 @@
 .boot-overlay {
+  --boot-ease-open: cubic-bezier(0.8, 0, 0.2, 1);
   position: fixed;
   inset: 0;
   z-index: 100;
   display: grid;
   place-items: center;
-  background: #000;
-  transition:
-    opacity 0.8s ease,
-    visibility 0.8s ease;
+  overflow: hidden;
+  pointer-events: auto;
 }
 
 html[data-booted] .boot-overlay {
   display: none;
 }
 
-.boot-exiting {
-  opacity: 0;
-  visibility: hidden;
+.boot-overlay::before,
+.boot-overlay::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.5%;
+  background: #000;
+  transition: transform 0.85s var(--boot-ease-open) 0.4s;
 }
 
-.boot-exiting .boot-stage {
-  transform: scale(1.15);
+.boot-overlay::before {
+  top: 0;
+}
+
+.boot-overlay::after {
+  bottom: 0;
+}
+
+.boot-exiting {
+  pointer-events: none;
+}
+
+.boot-exiting::before {
+  transform: translateY(-100%);
+}
+
+.boot-exiting::after {
+  transform: translateY(100%);
+}
+
+.boot-seam {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 12px 1px var(--accent);
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.boot-exiting .boot-seam {
+  animation: boot-seam 0.9s ease forwards;
+}
+
+@keyframes boot-seam {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  45% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
 }
 
 .boot-stage {
   position: relative;
-  width: min(62vw, 15rem);
+  z-index: 1;
+  width: min(78vw, 22rem);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
-  transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 .boot-ring {
@@ -37,21 +90,52 @@ html[data-booted] .boot-overlay {
   inset: 0;
   width: 100%;
   height: 100%;
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
+  animation: boot-ring-in 0.8s ease 0.15s both;
+  transition:
+    transform 0.8s var(--boot-ease-open),
+    opacity 0.6s ease;
 }
 
-.boot-ringTrack {
+.boot-exiting .boot-ring {
+  transform: rotate(-90deg) scale(2.2);
+  opacity: 0;
+}
+
+@keyframes boot-ring-in {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.9);
+  }
+}
+
+.boot-ring-track {
   fill: none;
-  stroke: rgb(255 255 255 / 0.12);
-  stroke-width: 0.4;
+  stroke: rgb(255 255 255 / 0.1);
+  stroke-width: 0.35;
 }
 
-.boot-ringProgress {
+.boot-ring-spinner {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.55);
+  stroke-width: 0.35;
+  stroke-dasharray: 22 78;
+  transform-origin: 50px 50px;
+  animation: boot-spin 1.6s linear infinite;
+}
+
+@keyframes boot-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.boot-ring-progress {
   fill: none;
   stroke: var(--accent);
-  filter: drop-shadow(0 0 1.5px var(--accent));
   stroke-width: 0.8;
   stroke-linecap: round;
+  filter: drop-shadow(0 0 1.5px var(--accent));
 }
 
 .boot-center {
@@ -59,53 +143,90 @@ html[data-booted] .boot-overlay {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  transition:
+    transform 0.6s var(--boot-ease-open),
+    opacity 0.45s ease,
+    filter 0.45s ease;
+}
+
+.boot-exiting .boot-center {
+  transform: scale(1.15);
+  opacity: 0;
+  filter: blur(6px);
 }
 
 .boot-mark {
-  width: 3.6rem;
+  width: 5.5rem;
   height: auto;
   overflow: visible;
 }
 
+.boot-outline {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 2px var(--accent));
+  animation:
+    boot-draw 1.1s cubic-bezier(0.6, 0, 0.3, 1) 0.4s forwards,
+    boot-outline-dim 0.8s ease 2.4s forwards;
+}
+
+@keyframes boot-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes boot-outline-dim {
+  to {
+    opacity: 0.35;
+  }
+}
+
 .boot-face {
   opacity: 0;
-  animation: boot-faceIn 1.3s steps(1, end) forwards;
+  animation: boot-face-in 0.9s steps(1, end) forwards;
 }
 
-.boot-face:nth-child(1) {
-  animation-delay: 0.3s;
+.boot-face:nth-of-type(1) {
+  --boot-from: -10px, 2px;
+  animation-delay: 1.3s;
 }
 
-.boot-face:nth-child(2) {
-  animation-delay: 0.75s;
+.boot-face:nth-of-type(2) {
+  --boot-from: 10px, -2px;
+  animation-delay: 1.55s;
 }
 
-.boot-face:nth-child(3) {
-  animation-delay: 1.2s;
+.boot-face:nth-of-type(3) {
+  --boot-from: 0, 8px;
+  animation-delay: 1.8s;
 }
 
-@keyframes boot-faceIn {
+@keyframes boot-face-in {
   0% {
     opacity: 1;
-    transform: translate(-6px, 0);
+    transform: translate(var(--boot-from));
   }
   12% {
     opacity: 0;
   }
   24% {
-    opacity: 1;
-    transform: translate(4px, -2px);
+    opacity: 0.9;
+    transform: translate(3px, -1px);
   }
   36% {
-    opacity: 0.2;
-    transform: translate(0, 0);
+    opacity: 0.15;
+    transform: none;
   }
-  52% {
+  50% {
     opacity: 1;
     transform: translate(-2px, 1px);
   }
-  66%,
+  64%,
   100% {
     opacity: 1;
     transform: none;
@@ -114,45 +235,37 @@ html[data-booted] .boot-overlay {
 
 .boot-word {
   position: relative;
+  display: flex;
+  margin-top: 1rem;
   font-family: var(--font-bebas), sans-serif;
-  font-size: 2.1rem;
-  letter-spacing: 0.24em;
+  font-size: 2.6rem;
   line-height: 1;
-  padding-left: 0.24em;
   color: #f4f4f5;
-  opacity: 0;
-  animation:
-    boot-wordIn 0.3s linear 1.8s forwards,
-    boot-jitter 2.4s steps(1, end) 1.8s infinite;
+  animation: boot-jitter 2.6s steps(1, end) 3.6s infinite;
 }
 
-.boot-word::before,
-.boot-word::after {
-  content: attr(data-text);
+.boot-letter {
+  display: inline-block;
+  width: 0.62em;
+  text-align: center;
+}
+
+.boot-word-layer {
   position: absolute;
   inset: 0;
-  padding-left: inherit;
-  overflow: hidden;
+  display: flex;
+  clip-path: inset(100% 0 0 0);
+  mix-blend-mode: screen;
 }
 
-.boot-word::before {
+.boot-word-layer-a {
   color: var(--accent);
-  transform: translate(-2px, 0);
-  animation: boot-sliceA 1.8s steps(1, end) 1.8s infinite;
-  mix-blend-mode: screen;
+  animation: boot-slice-a 1.8s steps(1, end) 3.6s infinite;
 }
 
-.boot-word::after {
+.boot-word-layer-b {
   color: #ffd9a8;
-  transform: translate(2px, 0);
-  animation: boot-sliceB 1.5s steps(1, end) 1.8s infinite;
-  mix-blend-mode: screen;
-}
-
-@keyframes boot-wordIn {
-  to {
-    opacity: 1;
-  }
+  animation: boot-slice-b 1.5s steps(1, end) 3.6s infinite;
 }
 
 @keyframes boot-jitter {
@@ -174,28 +287,29 @@ html[data-booted] .boot-overlay {
   }
 }
 
-@keyframes boot-sliceA {
+@keyframes boot-slice-a {
   0% {
     clip-path: inset(10% 0 70% 0);
+    transform: translate(-3px, 0);
   }
   20% {
     clip-path: inset(60% 0 20% 0);
     transform: translate(-4px, 0);
   }
-  40% {
+  40%,
+  100% {
     clip-path: inset(100% 0 0 0);
   }
   70% {
     clip-path: inset(35% 0 45% 0);
     transform: translate(3px, 0);
   }
-  85%,
-  100% {
+  85% {
     clip-path: inset(100% 0 0 0);
   }
 }
 
-@keyframes boot-sliceB {
+@keyframes boot-slice-b {
   0% {
     clip-path: inset(100% 0 0 0);
   }
@@ -216,41 +330,98 @@ html[data-booted] .boot-overlay {
   }
 }
 
+.boot-sub {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.45rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.5em;
+  padding-left: 0.5em;
+  color: rgb(255 255 255 / 0.65);
+  opacity: 0;
+  animation: boot-fade-in 0.6s ease 3.3s forwards;
+}
+
+.boot-sub-line {
+  width: 1.6rem;
+  height: 1px;
+  background: rgb(255 255 255 / 0.5);
+  transform: scaleX(0);
+  animation: boot-line-grow 0.6s ease 3.45s forwards;
+}
+
+.boot-sub-line:first-child {
+  transform-origin: right;
+}
+
+.boot-sub-line:last-child {
+  transform-origin: left;
+}
+
+@keyframes boot-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes boot-line-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
 .boot-fragment {
   position: absolute;
   height: 1px;
   background: #e9e9ec;
   opacity: 0;
-  animation: boot-flicker 1.3s steps(1, end) infinite;
+  animation: boot-flicker 1.4s steps(1, end) infinite;
 }
 
 .boot-fragment:nth-of-type(1) {
-  width: 1.4rem;
-  top: 30%;
-  left: 18%;
-  animation-delay: 0.3s;
+  width: 1.6rem;
+  top: 31%;
+  left: 20%;
+  animation-delay: 0.6s;
 }
 
 .boot-fragment:nth-of-type(2) {
   width: 0.6rem;
-  top: 38%;
+  top: 37%;
   right: 22%;
-  animation-delay: 0.8s;
+  animation-delay: 1.1s;
 }
 
 .boot-fragment:nth-of-type(3) {
   width: 1px;
-  height: 1.2rem;
-  bottom: 30%;
-  right: 30%;
-  animation-delay: 0.5s;
+  height: 1.3rem;
+  bottom: 31%;
+  right: 29%;
+  animation-delay: 0.9s;
 }
 
 .boot-fragment:nth-of-type(4) {
-  width: 0.9rem;
-  bottom: 36%;
-  left: 26%;
-  animation-delay: 1.1s;
+  width: 1rem;
+  bottom: 37%;
+  left: 25%;
+  animation-delay: 1.5s;
+}
+
+.boot-fragment:nth-of-type(5) {
+  width: 2.2rem;
+  top: 46%;
+  right: 16%;
+  background: var(--accent);
+  animation-delay: 2s;
+}
+
+.boot-fragment:nth-of-type(6) {
+  width: 1px;
+  height: 0.8rem;
+  top: 24%;
+  left: 38%;
+  animation-delay: 2.6s;
 }
 
 @keyframes boot-flicker {
@@ -272,11 +443,37 @@ html[data-booted] .boot-overlay {
   }
 }
 
+.boot-exiting .boot-fragment {
+  display: none;
+}
+
 .boot-percent {
   position: absolute;
-  bottom: 12%;
-  font-size: 0.7rem;
+  bottom: 11%;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
-  color: #c9c9cf;
+  color: rgb(255 255 255 / 0.6);
   font-variant-numeric: tabular-nums;
+  transition: opacity 0.3s ease;
+}
+
+.boot-exiting .boot-percent {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-ring-spinner,
+  .boot-word,
+  .boot-word-layer {
+    animation: none;
+  }
+
+  .boot-fragment {
+    display: none;
+  }
+
+  .boot-face {
+    animation-name: boot-fade-in;
+    animation-timing-function: ease;
+  }
 }
