@@ -141,7 +141,14 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-package-lock.json
-package.json
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+
+# Next.js
+.next/
+out/
+.vercel
+.env*
+next-env.d.ts
+.DS_Store
+*.pem
