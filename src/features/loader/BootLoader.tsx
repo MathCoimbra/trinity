@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { PYRAMID_FACES } from "@/components/ui/TrinityLogo";
-import styles from "./BootLoader.module.css";
+import "./boot-loader.css";
 
 export const BOOTED_STORAGE_KEY = "trinity:booted";
 export const bootedFlagScript = `try{if(sessionStorage.getItem("${BOOTED_STORAGE_KEY}"))document.documentElement.dataset.booted="1"}catch(e){}`;
@@ -29,10 +29,7 @@ export function BootLoader() {
   const [phase, setPhase] = useState<Phase>("loading");
 
   useEffect(() => {
-    if (document.documentElement.dataset.booted) {
-      setPhase("done");
-      return;
-    }
+    if (document.documentElement.dataset.booted) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const duration = reducedMotion ? REDUCED_MOTION_DURATION_MS : MIN_DURATION_MS;
@@ -75,18 +72,18 @@ export function BootLoader() {
 
   return (
     <div
-      className={`${styles.overlay} ${phase === "exiting" ? styles.exiting : ""}`}
+      className={`boot-overlay ${phase === "exiting" ? "boot-exiting" : ""}`}
       role="progressbar"
       aria-label="Carregando a loja"
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(progress * 100)}
     >
-      <div className={styles.stage}>
-        <svg className={styles.ring} viewBox="0 0 100 100" aria-hidden="true">
-          <circle className={styles.ringTrack} cx="50" cy="50" r={RING_RADIUS} />
+      <div className="boot-stage">
+        <svg className="boot-ring" viewBox="0 0 100 100" aria-hidden="true">
+          <circle className="boot-ringTrack" cx="50" cy="50" r={RING_RADIUS} />
           <circle
-            className={styles.ringProgress}
+            className="boot-ringProgress"
             cx="50"
             cy="50"
             r={RING_RADIUS}
@@ -95,23 +92,23 @@ export function BootLoader() {
           />
         </svg>
 
-        <span className={styles.fragment} />
-        <span className={styles.fragment} />
-        <span className={styles.fragment} />
-        <span className={styles.fragment} />
+        <span className="boot-fragment" />
+        <span className="boot-fragment" />
+        <span className="boot-fragment" />
+        <span className="boot-fragment" />
 
-        <div className={styles.center}>
-          <svg className={styles.mark} viewBox="0 0 100 92" aria-hidden="true">
+        <div className="boot-center">
+          <svg className="boot-mark" viewBox="0 0 100 92" aria-hidden="true">
             {PYRAMID_FACES.map((face) => (
-              <polygon key={face.id} className={styles.face} points={face.points} fill={face.fill} />
+              <polygon key={face.id} className="boot-face" points={face.points} fill={face.fill} />
             ))}
           </svg>
-          <span className={styles.word} data-text="TRINITY">
+          <span className="boot-word" data-text="TRINITY">
             TRINITY
           </span>
         </div>
 
-        <span className={styles.percent}>{Math.round(progress * 100)}%</span>
+        <span className="boot-percent">{Math.round(progress * 100)}%</span>
       </div>
     </div>
   );
