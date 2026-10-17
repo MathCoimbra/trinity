@@ -1,0 +1,10 @@
+const brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+
+export function formatBRL(cents: number): string {
+  return brl.format(cents / 100).replace(/ /g, " ");
+}
+
+export function discountPercent(priceCents: number, compareAtCents?: number): number | null {
+  if (!compareAtCents || compareAtCents <= priceCents) return null;
+  return Math.round((1 - priceCents / compareAtCents) * 100);
+}

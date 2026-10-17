@@ -1,0 +1,281 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #000;
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+:global(html[data-booted]) .overlay {
+  display: none;
+}
+
+.exiting {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.exiting .stage {
+  transform: scale(1.15);
+}
+
+.stage {
+  position: relative;
+  width: min(62vw, 15rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(90deg);
+}
+
+.ringTrack {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.12);
+  stroke-width: 0.4;
+}
+
+.ringProgress {
+  fill: none;
+  stroke: #e9e9ec;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+}
+
+.center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mark {
+  width: 3.6rem;
+  height: auto;
+  overflow: visible;
+}
+
+.face {
+  opacity: 0;
+  animation: faceIn 0.9s steps(1, end) forwards;
+}
+
+.face:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.face:nth-child(2) {
+  animation-delay: 0.35s;
+}
+
+.face:nth-child(3) {
+  animation-delay: 0.55s;
+}
+
+@keyframes faceIn {
+  0% {
+    opacity: 1;
+    transform: translate(-6px, 0);
+  }
+  12% {
+    opacity: 0;
+  }
+  24% {
+    opacity: 1;
+    transform: translate(4px, -2px);
+  }
+  36% {
+    opacity: 0.2;
+    transform: translate(0, 0);
+  }
+  52% {
+    opacity: 1;
+    transform: translate(-2px, 1px);
+  }
+  66%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.word {
+  position: relative;
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 2.1rem;
+  letter-spacing: 0.24em;
+  line-height: 1;
+  padding-left: 0.24em;
+  color: #f4f4f5;
+  opacity: 0;
+  animation:
+    wordIn 0.2s linear 0.7s forwards,
+    jitter 2.4s steps(1, end) 0.7s infinite;
+}
+
+.word::before,
+.word::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  padding-left: inherit;
+  overflow: hidden;
+}
+
+.word::before {
+  color: var(--accent);
+  transform: translate(-2px, 0);
+  animation: sliceA 1.8s steps(1, end) 0.7s infinite;
+  mix-blend-mode: screen;
+}
+
+.word::after {
+  color: #7dd3fc;
+  transform: translate(2px, 0);
+  animation: sliceB 1.5s steps(1, end) 0.7s infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes wordIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes jitter {
+  0%,
+  100% {
+    transform: none;
+  }
+  8% {
+    transform: translate(2px, -1px) skewX(-8deg);
+  }
+  10% {
+    transform: none;
+  }
+  46% {
+    transform: translate(-3px, 0);
+  }
+  48% {
+    transform: none;
+  }
+}
+
+@keyframes sliceA {
+  0% {
+    clip-path: inset(10% 0 70% 0);
+  }
+  20% {
+    clip-path: inset(60% 0 20% 0);
+    transform: translate(-4px, 0);
+  }
+  40% {
+    clip-path: inset(100% 0 0 0);
+  }
+  70% {
+    clip-path: inset(35% 0 45% 0);
+    transform: translate(3px, 0);
+  }
+  85%,
+  100% {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes sliceB {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  30% {
+    clip-path: inset(75% 0 5% 0);
+    transform: translate(4px, 0);
+  }
+  45% {
+    clip-path: inset(100% 0 0 0);
+  }
+  60% {
+    clip-path: inset(15% 0 65% 0);
+    transform: translate(-3px, 0);
+  }
+  75%,
+  100% {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+.fragment {
+  position: absolute;
+  height: 1px;
+  background: #e9e9ec;
+  opacity: 0;
+  animation: flicker 1.3s steps(1, end) infinite;
+}
+
+.fragment:nth-of-type(1) {
+  width: 1.4rem;
+  top: 30%;
+  left: 18%;
+  animation-delay: 0.3s;
+}
+
+.fragment:nth-of-type(2) {
+  width: 0.6rem;
+  top: 38%;
+  right: 22%;
+  animation-delay: 0.8s;
+}
+
+.fragment:nth-of-type(3) {
+  width: 1px;
+  height: 1.2rem;
+  bottom: 30%;
+  right: 30%;
+  animation-delay: 0.5s;
+}
+
+.fragment:nth-of-type(4) {
+  width: 0.9rem;
+  bottom: 36%;
+  left: 26%;
+  animation-delay: 1.1s;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  18% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 0.6;
+  }
+  60% {
+    opacity: 0;
+  }
+}
+
+.percent {
+  position: absolute;
+  bottom: 12%;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #c9c9cf;
+  font-variant-numeric: tabular-nums;
+}

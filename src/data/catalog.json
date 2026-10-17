@@ -1,0 +1,623 @@
+{
+  "categories": [
+    {
+      "id": "carvoes",
+      "name": "Carvões"
+    },
+    {
+      "id": "essencias",
+      "name": "Essências"
+    },
+    {
+      "id": "narguile",
+      "name": "Narguilés"
+    },
+    {
+      "id": "rosh",
+      "name": "Rosh"
+    },
+    {
+      "id": "acessorios",
+      "name": "Acessórios"
+    },
+    {
+      "id": "headshop",
+      "name": "Headshop"
+    }
+  ],
+  "products": [
+    {
+      "id": "carvao-kavaleira-500g",
+      "categoryId": "carvoes",
+      "name": "CARVÃO KAVALEIRA 500G",
+      "description": "Carvão de fibra de coco",
+      "priceCents": 2999,
+      "compareAtCents": 4000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/c79bb180-8563-497d-9164-6d6bc3b07dfb.webp"
+    },
+    {
+      "id": "carvao-kavaleira-1kg",
+      "categoryId": "carvoes",
+      "name": "CARVÃO KAVALEIRA 1KG",
+      "description": "Carvão de fibra de coco",
+      "priceCents": 3999,
+      "compareAtCents": 6000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/23e24492-7333-44f6-8bc0-756c7ed9d8c8.webp"
+    },
+    {
+      "id": "carvao-fumax-500g",
+      "categoryId": "carvoes",
+      "name": "CARVÃO FUMAX 500G",
+      "description": "Carvão de coco Fumax",
+      "priceCents": 3499,
+      "compareAtCents": 4000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/5864a951-46ce-469d-a6a8-0e09f0f79665.webp"
+    },
+    {
+      "id": "carvao-fumax-1kg",
+      "categoryId": "carvoes",
+      "name": "CARVÃO FUMAX 1KG",
+      "description": "Carvão de coco",
+      "priceCents": 4999,
+      "compareAtCents": 6000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/d1fa0604-2fc2-4964-9483-1c9a0213aae5.webp"
+    },
+    {
+      "id": "carvao-unitario",
+      "categoryId": "carvoes",
+      "name": "CARVÃO UNITÁRIO",
+      "description": "Carvão de coco hexagonal",
+      "priceCents": 100,
+      "image": "https://assets.olaclick.app/companies/products/images/800/dbd43d53-5b58-4ef4-8218-21cfb297b296.webp"
+    },
+    {
+      "id": "carvao-unitario-fumax",
+      "categoryId": "carvoes",
+      "name": "CARVÃO UNITÁRIO FUMAX",
+      "description": "Carvão de coco hexagonal",
+      "priceCents": 150,
+      "image": "https://assets.olaclick.app/companies/products/images/800/dbd43d53-5b58-4ef4-8218-21cfb297b296.webp"
+    },
+    {
+      "id": "zomo-2-macas",
+      "categoryId": "essencias",
+      "name": "ZOMO 2 MAÇÃS",
+      "description": "Essência Zomo sabor 2 maçãs",
+      "priceCents": 1299,
+      "image": "https://assets.olaclick.app/companies/products/images/800/e685c2d4-f2e0-4040-b553-464639119285.webp"
+    },
+    {
+      "id": "ziggy-magic-milho",
+      "categoryId": "essencias",
+      "name": "ZIGGY MAGIC MILHO",
+      "description": "Colab Magic e Ziggy, sabor milho",
+      "priceCents": 1400,
+      "image": "https://assets.olaclick.app/companies/products/images/800/773805b8-aabd-4436-8575-16714a6e4ba2.webp"
+    },
+    {
+      "id": "ziggy-frutas-amarelas",
+      "categoryId": "essencias",
+      "name": "ZIGGY FRUTAS AMARELAS",
+      "description": "Essência Ziggy sabor frutas amarelas",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/79f929b0-1125-4e31-9163-0454dbdedfbd.webp"
+    },
+    {
+      "id": "ziggy-burley-mint",
+      "categoryId": "essencias",
+      "name": "ZIGGY BURLEY MINT",
+      "description": "Essência Ziggy sabor menta adocicada",
+      "priceCents": 1400,
+      "image": "https://assets.olaclick.app/companies/products/images/800/ea45b7a8-ef59-490f-8464-290a8d0a203a.webp"
+    },
+    {
+      "id": "ziggy-sorvete-de-pistache",
+      "categoryId": "essencias",
+      "name": "ZIGGY SORVETE DE PISTACHE",
+      "description": "Sabor sorvete de pistache",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/3e699d4a-3636-48bc-8f32-11c0dec01e9e.webp"
+    },
+    {
+      "id": "ziggy-sakamoto",
+      "categoryId": "essencias",
+      "name": "ZIGGY SAKAMOTO",
+      "description": "Red lemoned",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/3710fcbf-6791-473e-a5ce-3a130c28812d.webp"
+    },
+    {
+      "id": "ziggy-tropical",
+      "categoryId": "essencias",
+      "name": "ZIGGY TROPICAL",
+      "description": "Sabor frutas tropicais",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/43cf685e-b904-4cf8-8b3c-082393b851dc.webp"
+    },
+    {
+      "id": "onix-high-tutti",
+      "categoryId": "essencias",
+      "name": "ONIX HIGH TUTTI",
+      "description": "Essência Onix sabor tutti frutti",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/55d35e6e-1be3-444b-b8be-6156e4aa03ba.webp"
+    },
+    {
+      "id": "onix-high-passion",
+      "categoryId": "essencias",
+      "name": "ONIX HIGH PASSION",
+      "description": "Essência Onix sabor maracujá",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/d451c9d3-3604-4f3b-8dbf-ba744597e050.webp"
+    },
+    {
+      "id": "onix-high-lemon",
+      "categoryId": "essencias",
+      "name": "ONIX HIGH LEMON",
+      "description": "Essência Onix sabor limão",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/de1ba491-96f9-4af1-9a5d-2814c5f8da54.webp"
+    },
+    {
+      "id": "onix-laranja",
+      "categoryId": "essencias",
+      "name": "ONIX LARANJA",
+      "description": "Essência Onix sabor laranja",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/a15022cb-f86e-4f09-b97d-52fe6f6d9a2a.webp"
+    },
+    {
+      "id": "onix-koke",
+      "categoryId": "essencias",
+      "name": "ONIX KOKE",
+      "description": "Sabor coca-cola",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/be6e0c97-9b93-49aa-ac06-3fe1c101cd84.webp"
+    },
+    {
+      "id": "onix-yellow-drops",
+      "categoryId": "essencias",
+      "name": "ONIX YELLOW DROPS",
+      "description": "Essência Onix sabor frutas amarelas",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/6ad48eaf-b7e6-4702-bdf3-64bf8faf783e.webp"
+    },
+    {
+      "id": "onix-high-mint",
+      "categoryId": "essencias",
+      "name": "ONIX HIGH MINT",
+      "description": "Sabor menta gelada",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/d44b7878-6154-4489-8ebc-1993bc1501c8.webp"
+    },
+    {
+      "id": "onix-menta",
+      "categoryId": "essencias",
+      "name": "ONIX MENTA",
+      "description": "Sabor menta refrescante",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/5ddea802-fbee-4c56-8428-db0d94b5f1c3.webp"
+    },
+    {
+      "id": "onix-high-fusion",
+      "categoryId": "essencias",
+      "name": "ONIX HIGH FUSION",
+      "description": "Laranja, manga, maracujá, melão e banana",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/a67bfa98-e521-4956-8478-d6d0795912d0.webp"
+    },
+    {
+      "id": "onix-pera",
+      "categoryId": "essencias",
+      "name": "ONIX PERA",
+      "description": "Essência Onix sabor pera",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/6e2b1e67-34a6-430a-9241-ae76222a75f6.webp"
+    },
+    {
+      "id": "onix-banana",
+      "categoryId": "essencias",
+      "name": "ONIX BANANA",
+      "description": "Essência Onix sabor banana",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/df417845-0683-447a-a61d-6e412580de50.webp"
+    },
+    {
+      "id": "nay-morango",
+      "categoryId": "essencias",
+      "name": "NAY MORANGO",
+      "description": "Essência Nay sabor morango",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/e5bf944f-3519-4975-979d-a7534864712a.webp"
+    },
+    {
+      "id": "nay-melon-blend",
+      "categoryId": "essencias",
+      "name": "NAY MELON BLEND",
+      "description": "Essência Nay sabor melão",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/57f50f41-f6fd-4b03-911b-62f3d20d7196.webp"
+    },
+    {
+      "id": "nay-snow",
+      "categoryId": "essencias",
+      "name": "NAY SNOW",
+      "description": "Essência Nay sabor menta forte",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/4ad00971-947e-4729-bdd6-c75f8242a1f9.webp"
+    },
+    {
+      "id": "nay-manga-e-banana",
+      "categoryId": "essencias",
+      "name": "NAY MANGA E BANANA",
+      "description": "Sabor manga com banana",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/7850cde5-7a81-4acf-a21f-3401e87cb0d6.webp"
+    },
+    {
+      "id": "nay-banana-e-melao",
+      "categoryId": "essencias",
+      "name": "NAY BANANA E MELÃO",
+      "description": "Sabor melão com banana",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/3d265638-9e04-4a96-b985-0d51a5e7033d.webp"
+    },
+    {
+      "id": "nay-vanilla",
+      "categoryId": "essencias",
+      "name": "NAY VANILLA",
+      "description": "Essência Nay sabor baunilha",
+      "priceCents": 1300,
+      "image": "https://assets.olaclick.app/companies/products/images/800/b92b33d5-8413-46e0-bc9e-f0d722b08969.webp"
+    },
+    {
+      "id": "narguile-booom-dourado",
+      "categoryId": "narguile",
+      "name": "NARGUILÉ BOOOM DOURADO",
+      "description": "Narguilé Booom completo\nAcompanha: rosh caveira, prato duplo, vaso transparente, mangueira duto e borrachas de vedação\n+ kit sessão por nossa conta: 1 essência, 3 carvões e alumínio",
+      "priceCents": 43000,
+      "compareAtCents": 51000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/9d0a4f7c-e897-4092-b647-5c37b8af2394.webp"
+    },
+    {
+      "id": "narguile-booom-vl",
+      "categoryId": "narguile",
+      "name": "NARGUILÉ BOOOM VL",
+      "description": "Narguilé Booom completo\nAcompanha: rosh caveira, prato duplo, vaso transparente, mangueira duto e borrachas de vedação\n+ kit sessão por nossa conta: 1 essência, 3 carvões e alumínio",
+      "priceCents": 43000,
+      "compareAtCents": 51000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/a304cf33-4c35-4086-9e51-8653af9a1214.webp"
+    },
+    {
+      "id": "narguile-booom-azul",
+      "categoryId": "narguile",
+      "name": "NARGUILÉ BOOOM AZUL",
+      "description": "Narguilé Booom completo\nAcompanha: rosh caveira, prato duplo, vaso transparente, mangueira duto e borrachas de vedação\n+ kit sessão por nossa conta: 1 essência, 3 carvões e alumínio",
+      "priceCents": 43000,
+      "compareAtCents": 51000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/fac75df2-2452-44ce-b984-83a3eca8bcd3.webp"
+    },
+    {
+      "id": "narguile-booom-roxo",
+      "categoryId": "narguile",
+      "name": "NARGUILÉ BOOOM ROXO",
+      "description": "Narguilé Booom\nAcompanha: rosh branco, prato, vaso médio color, mangueira duto e borrachas de vedação\n+ kit sessão por nossa conta: 1 essência, 3 carvões e alumínio",
+      "priceCents": 43000,
+      "compareAtCents": 51000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/3934aee7-083b-4fcd-9c99-45b357f5522f.webp"
+    },
+    {
+      "id": "narguile-monte-verde-m",
+      "categoryId": "narguile",
+      "name": "NARGUILÉ MONTE VERDE M",
+      "description": "Narguilé Monte Verde\nAcompanha: rosh branco, prato, vaso espelhado dourado, mangueira duto e borrachas de vedação\n+ kit sessão por nossa conta: 1 essência, 3 carvões e alumínio",
+      "priceCents": 38000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/f0cb5ba7-d520-4a20-8400-67d9685f3a15.webp"
+    },
+    {
+      "id": "narguile-valley-marrom",
+      "categoryId": "narguile",
+      "name": "NARGUILÉ VALLEY MARROM",
+      "description": "Narguilé Valley\nAcompanha: rosh Joy, prato Kimo, vaso transparente, mangueira duto e borrachas de vedação\n+ kit sessão por nossa conta: 1 essência, 3 carvões e alumínio",
+      "priceCents": 33000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/759cef88-b0b7-4bc2-9df8-055e5b63c239.webp"
+    },
+    {
+      "id": "narguile-amazom-marrom",
+      "categoryId": "narguile",
+      "name": "NARGUILÉ AMAZOM MARROM",
+      "description": "Narguilé Amazom\nAcompanha: rosh black, prato Xhookah, vaso transparente, mangueira duto e borrachas de vedação\n+ kit sessão por nossa conta: 1 essência, 3 carvões e alumínio",
+      "priceCents": 34000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/2a0d94f1-8f7a-41e9-946c-cd33ecd02353.webp"
+    },
+    {
+      "id": "narguile-meduse",
+      "categoryId": "narguile",
+      "name": "NARGUILÉ MEDUSE",
+      "description": "Produto importado, estimativa de 5 a 7 dias úteis para envio",
+      "priceCents": 420000,
+      "compareAtCents": 450000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/5b93a544-860a-4e37-ab64-d917428d6d2b.webp"
+    },
+    {
+      "id": "bolsa-media",
+      "categoryId": "acessorios",
+      "name": "BOLSA MÉDIA",
+      "description": "Bolsa para narguilé médio",
+      "priceCents": 17000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/2c50ab3a-b564-4919-9582-50f61c15d756.webp"
+    },
+    {
+      "id": "bolsa-pequena",
+      "categoryId": "acessorios",
+      "name": "BOLSA PEQUENA",
+      "description": "Bolsa para narguilé pequeno",
+      "priceCents": 13000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/24f7944a-29b8-4027-8f61-7bedfac944dd.webp"
+    },
+    {
+      "id": "difusor",
+      "categoryId": "acessorios",
+      "name": "DIFUSOR",
+      "description": "Difusor para narguilé",
+      "priceCents": 2500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/5b325999-0105-4909-9e5f-d075262d5e43.webp"
+    },
+    {
+      "id": "furador-com-garfo",
+      "categoryId": "acessorios",
+      "name": "FURADOR COM GARFO",
+      "description": "Furador com garfo de ferro e chaveiro. Consultar cores disponíveis",
+      "priceCents": 2000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/6dd0f96f-ccbc-4d2b-8ce4-5db7f0286690.webp"
+    },
+    {
+      "id": "abafador-joy",
+      "categoryId": "acessorios",
+      "name": "ABAFADOR JOY",
+      "description": "Consultar modelos disponíveis",
+      "priceCents": 3500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/ba61b8d8-0234-41a0-a369-be7fc2982291.webp"
+    },
+    {
+      "id": "abafador-chams",
+      "categoryId": "acessorios",
+      "name": "ABAFADOR CHAMS",
+      "description": "Consultar cores disponíveis",
+      "priceCents": 5000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/6f7799bd-4c69-41a0-85e1-6d2ca3f8b9e9.webp"
+    },
+    {
+      "id": "piteiras-diversas",
+      "categoryId": "acessorios",
+      "name": "PITEIRAS DIVERSAS",
+      "description": "Consultar cores e modelos disponíveis",
+      "priceCents": 4000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/33ea183d-8c91-415d-823f-5d238d2c9848.webp"
+    },
+    {
+      "id": "molde-para-furacao",
+      "categoryId": "acessorios",
+      "name": "MOLDE PARA FURAÇÃO",
+      "description": "Consultar modelos e cores",
+      "priceCents": 1500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/ab1b08f2-6b12-4543-8ce1-ae9caf6b52dc.webp"
+    },
+    {
+      "id": "safe-screen-basica",
+      "categoryId": "acessorios",
+      "name": "SAFE SCREEN BÁSICA",
+      "description": "Reduz o contato do carvão com a essência, deixando a sessão mais duradoura",
+      "priceCents": 1800,
+      "image": "https://assets.olaclick.app/companies/products/images/800/e64544fb-78fb-4564-8ad5-3e75e9132455.webp"
+    },
+    {
+      "id": "fogareiro-pequeno-110v",
+      "categoryId": "acessorios",
+      "name": "FOGAREIRO PEQUENO 110V",
+      "description": "",
+      "priceCents": 4000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/ab881c3c-e659-4e25-8312-b5829cbcd155.webp"
+    },
+    {
+      "id": "fogareiro-220v",
+      "categoryId": "acessorios",
+      "name": "FOGAREIRO 220V",
+      "description": "",
+      "priceCents": 4000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/ab881c3c-e659-4e25-8312-b5829cbcd155.webp"
+    },
+    {
+      "id": "prato-medio-joy",
+      "categoryId": "acessorios",
+      "name": "PRATO MÉDIO JOY",
+      "description": "Consultar modelos disponíveis",
+      "priceCents": 3500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/e2b9c683-d925-4e19-8e80-87eec6484c0f.webp"
+    },
+    {
+      "id": "prato-pequeno-joy",
+      "categoryId": "acessorios",
+      "name": "PRATO PEQUENO JOY",
+      "description": "Consultar modelos disponíveis",
+      "priceCents": 3000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/512e2699-be44-4118-adc1-4a2f791753e9.webp"
+    },
+    {
+      "id": "vasos",
+      "categoryId": "acessorios",
+      "name": "VASOS",
+      "description": "Consultar cores disponíveis",
+      "priceCents": 4000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/7a079afd-5015-43ef-8e77-bd31d8efb33e.webp"
+    },
+    {
+      "id": "rosh-pro-hookah-roxo",
+      "categoryId": "rosh",
+      "name": "ROSH PRO HOOKAH ROXO",
+      "description": "",
+      "priceCents": 8000,
+      "compareAtCents": 9000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/0999f473-98fd-4ef2-87da-ebbfea90e395.webp"
+    },
+    {
+      "id": "rosh-pro-hookah-dourado",
+      "categoryId": "rosh",
+      "name": "ROSH PRO HOOKAH DOURADO",
+      "description": "",
+      "priceCents": 8000,
+      "compareAtCents": 9000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/0232132d-be09-4174-9661-621d9fe9e7ec.webp"
+    },
+    {
+      "id": "rosh-pro-hookah-azul-bb",
+      "categoryId": "rosh",
+      "name": "ROSH PRO HOOKAH AZUL BB",
+      "description": "",
+      "priceCents": 8000,
+      "compareAtCents": 9000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/9805601a-d8d5-4557-9ae5-5555deecbfe8.webp"
+    },
+    {
+      "id": "rosh-pro-hookah-vermelho",
+      "categoryId": "rosh",
+      "name": "ROSH PRO HOOKAH VERMELHO",
+      "description": "",
+      "priceCents": 8000,
+      "compareAtCents": 9000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/3698108d-34f0-4dc1-a77a-51d1514021ed.webp"
+    },
+    {
+      "id": "rosh-pro-hookah-verde",
+      "categoryId": "rosh",
+      "name": "ROSH PRO HOOKAH VERDE",
+      "description": "",
+      "priceCents": 8000,
+      "compareAtCents": 9000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/f35cc05b-e42a-4dea-b43d-d2cfb04a6fb4.webp"
+    },
+    {
+      "id": "rosh-oht",
+      "categoryId": "rosh",
+      "name": "ROSH OHT",
+      "description": "",
+      "priceCents": 8000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/54beabac-2d55-4798-89b4-7881d0f1f0ba.webp"
+    },
+    {
+      "id": "rosh-oht-branco",
+      "categoryId": "rosh",
+      "name": "ROSH OHT BRANCO",
+      "description": "",
+      "priceCents": 5000,
+      "compareAtCents": 6000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/d88fc76b-1c72-4cd4-82a0-535becac8b49.webp"
+    },
+    {
+      "id": "rosh-bking-h-aranha",
+      "categoryId": "rosh",
+      "name": "ROSH BKING H ARANHA",
+      "description": "",
+      "priceCents": 5000,
+      "compareAtCents": 6000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/45bfb332-bde0-4513-bde3-74157dbc78dc.webp"
+    },
+    {
+      "id": "rosh-bking-c-america",
+      "categoryId": "rosh",
+      "name": "ROSH BKING C AMÉRICA",
+      "description": "",
+      "priceCents": 5000,
+      "compareAtCents": 6000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/27fa0f37-d490-423f-b11b-a3b2c6f02c50.webp"
+    },
+    {
+      "id": "rosh-bking-goku",
+      "categoryId": "rosh",
+      "name": "ROSH BKING GOKU",
+      "description": "",
+      "priceCents": 5000,
+      "compareAtCents": 6000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/0728ede1-6550-4eca-ab87-9c18d459ace4.webp"
+    },
+    {
+      "id": "rosh-joy-vermelho",
+      "categoryId": "rosh",
+      "name": "ROSH JOY VERMELHO",
+      "description": "",
+      "priceCents": 3000,
+      "compareAtCents": 3500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/c67c7bf6-89fc-4d21-a0cb-50b5fe49f446.webp"
+    },
+    {
+      "id": "rosh-joy-marrom",
+      "categoryId": "rosh",
+      "name": "ROSH JOY MARROM",
+      "description": "",
+      "priceCents": 3000,
+      "compareAtCents": 3500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/c7eb90b1-227c-448e-a6fa-d930e97562a5.webp"
+    },
+    {
+      "id": "rosh-caveira-azul",
+      "categoryId": "rosh",
+      "name": "ROSH CAVEIRA AZUL",
+      "description": "",
+      "priceCents": 2500,
+      "compareAtCents": 3500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/96ca342f-6a5c-4515-9f21-8f0df1bbf66a.webp"
+    },
+    {
+      "id": "rosh-azul",
+      "categoryId": "rosh",
+      "name": "ROSH AZUL",
+      "description": "",
+      "priceCents": 1500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/788cc18c-a3b5-4a25-b09a-84aa315f611b.webp"
+    },
+    {
+      "id": "isqueiro-diversas-cores",
+      "categoryId": "headshop",
+      "name": "ISQUEIRO DIVERSAS CORES",
+      "description": "Consultar cores disponíveis",
+      "priceCents": 500,
+      "compareAtCents": 600,
+      "image": "https://assets.olaclick.app/companies/products/images/800/d5dab7e2-040c-4908-b157-5a5ec2549817.webp"
+    },
+    {
+      "id": "desfiador",
+      "categoryId": "headshop",
+      "name": "DESFIADOR",
+      "description": "Consultar cores disponíveis",
+      "priceCents": 800,
+      "compareAtCents": 1000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/c7fa725e-eff7-42b2-b695-cdb1f8c4b224.webp"
+    },
+    {
+      "id": "cuia-silicone-ns-md",
+      "categoryId": "headshop",
+      "name": "CUIA SILICONE NS MD",
+      "description": "Consultar cores disponíveis",
+      "priceCents": 1200,
+      "image": "https://assets.olaclick.app/companies/products/images/800/5a2a0372-3581-4621-a92b-2073466a1961.webp"
+    },
+    {
+      "id": "piteira-slim-bem-bolado",
+      "categoryId": "headshop",
+      "name": "PITEIRA SLIM BEM BOLADO",
+      "description": "Com 32 folhas",
+      "priceCents": 400,
+      "compareAtCents": 500,
+      "image": "https://assets.olaclick.app/companies/products/images/800/a5e08d6a-1ac4-4c68-bcc0-d2b57b694fd0.webp"
+    },
+    {
+      "id": "shoulder-bag-tonabe",
+      "categoryId": "headshop",
+      "name": "SHOULDER BAG TONABE",
+      "description": "Bag com 3 bolsos, tamanho L",
+      "priceCents": 5000,
+      "compareAtCents": 7000,
+      "image": "https://assets.olaclick.app/companies/products/images/800/340b7b81-136c-4aac-b190-c0a94dde91b2.webp"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Trinity Hookah",
+  "tagline": "Narguilés, essências e acessórios",
+  "whatsapp": "5511945590209",
+  "address": "Rua Saint Gall, 239 - Lauzane Paulista, São Paulo - SP, 02440-070",
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua+Saint+Gall%2C+239+-+Lauzane+Paulista%2C+S%C3%A3o+Paulo+-+SP",
+  "socials": {
+    "instagram": "https://www.instagram.com/trinityhookah",
+    "facebook": "https://www.facebook.com/trinityhookah",
+    "tiktok": "https://www.tiktok.com/@trinityhookah"
+  },
+  "services": {
+    "delivery": { "enabled": true, "minimumOrderCents": 2000, "feeCents": 750 },
+    "pickup": { "enabled": true },
+    "dineIn": { "enabled": true }
+  }
+}
