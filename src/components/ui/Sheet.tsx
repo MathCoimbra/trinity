@@ -35,7 +35,7 @@ export function Sheet({ open, onClose, title, children, footer }: SheetProps) {
         if (event.target === dialogRef.current) onClose();
       }}
       aria-label={title}
-      className="sheet fixed inset-x-0 bottom-0 top-auto m-0 flex max-h-[92dvh] w-full max-w-none flex-col overflow-hidden rounded-t-2xl border border-line bg-surface p-0 text-fg backdrop:bg-black/70 backdrop:backdrop-blur-sm md:inset-0 md:m-auto md:max-h-[85dvh] md:max-w-lg md:rounded-2xl [&:not([open])]:hidden"
+      className="sheet fixed inset-x-0 bottom-0 top-auto m-0 flex max-h-[92dvh] w-full max-w-none flex-col overflow-clip rounded-t-2xl border border-line bg-surface p-0 text-fg backdrop:bg-black/70 backdrop:backdrop-blur-sm md:inset-0 md:m-auto md:max-h-[85dvh] md:max-w-lg md:rounded-2xl [&:not([open])]:hidden"
     >
       <header className="flex items-center justify-between gap-4 border-b border-line px-5 py-3">
         <h2 className="font-display text-2xl tracking-wide">{title}</h2>

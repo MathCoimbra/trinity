@@ -157,7 +157,7 @@ export function CheckoutSheet({ open, onClose, lines, store, onQuantityChange, o
             {availableServices.map((option) => (
               <label
                 key={option}
-                className={`flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 text-center text-xs font-medium transition ${
+                className={`relative flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 text-center text-xs font-medium transition ${
                   service === option ? "border-accent bg-accent-soft text-fg" : "border-line-strong text-muted"
                 }`}
               >
@@ -210,7 +210,7 @@ export function CheckoutSheet({ open, onClose, lines, store, onQuantityChange, o
             {(Object.keys(PAYMENT_LABELS) as PaymentPreference[]).map((option) => (
               <label
                 key={option}
-                className={`flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 text-center text-xs font-medium transition ${
+                className={`relative flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 text-center text-xs font-medium transition ${
                   payment === option ? "border-accent bg-accent-soft text-fg" : "border-line-strong text-muted"
                 }`}
               >
