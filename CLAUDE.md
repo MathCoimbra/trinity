@@ -22,10 +22,11 @@ Sem pagamento online por enquanto. O checkout monta uma mensagem com o pedido e 
 
 ## Design
 
-- Mistura do cardápio da Ola Click (estrutura: abas de categoria sticky, cards com foto/preço/desconto) com a identidade da FIAP (fundo preto, títulos condensados em caixa alta, linhas finas, acento magenta).
+- Mistura do cardápio da Ola Click (estrutura: abas de categoria sticky, cards com foto/preço/desconto) com a identidade da FIAP (fundo preto, títulos condensados em caixa alta, linhas finas, acento laranja da marca).
 - Mobile-first: validar em 375px antes de desktop; alvos de toque ≥ 44px; respeitar `safe-area-inset`.
-- Cores só via tokens em `src/app/globals.css` (acento `--accent: #ed145b`); não usar hex solto nos componentes.
+- Cores só via tokens em `src/app/globals.css` (acento laranja `--accent: #ff7a00`, padrão da marca vindo da Ola Click; texto sobre o acento usa `--accent-fg`); não usar hex solto nos componentes.
 - Animações respeitam `prefers-reduced-motion`.
+- Não usar CSS Modules: a regra `*.css` do Turbopack em `next.config.ts` (loader do Tailwind) os trata como CSS global e as classes não ganham hash. CSS próprio vai em arquivo global com prefixo (ex.: `boot-*` em `features/loader/boot-loader.css`).
 
 ## Branches
 
