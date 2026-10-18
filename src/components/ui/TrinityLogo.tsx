@@ -49,9 +49,9 @@ type TrinityLogoProps = {
 
 export function TrinityLogo({ className = "", showWordmark = true }: TrinityLogoProps) {
   return (
-    <span className={`inline-flex flex-col items-center gap-[12%] ${className}`}>
+    <span className={`inline-flex flex-col items-center ${className}`}>
       <TrinityMark className="h-auto w-[78%]" />
-      {showWordmark && <TrinityWordmark className="w-full text-muted" />}
+      {showWordmark && <TrinityWordmark className="mt-[14%] w-full text-muted" />}
     </span>
   );
 }
