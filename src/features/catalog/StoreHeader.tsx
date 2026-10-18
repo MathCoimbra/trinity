@@ -30,7 +30,7 @@ export function StoreHeader({ store }: { store: StoreInfo }) {
       <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 pb-6 pt-10 md:flex-row md:items-end md:justify-between md:px-8 md:pt-16">
         <div className="flex items-end gap-4">
           <div className="grid size-24 shrink-0 place-items-center rounded-2xl border border-line-strong bg-[#232327] p-3 shadow-2xl shadow-black/60 md:size-28">
-            <TrinityLogo className="w-full text-[0.62rem]" />
+            <TrinityLogo className="w-full" />
           </div>
           <div className="min-w-0 pb-1">
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.3em] text-accent">Tabacaria · Headshop</p>

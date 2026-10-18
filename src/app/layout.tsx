@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Poppins } from "next/font/google";
 import { BootLoader, bootedFlagScript } from "@/features/loader/BootLoader";
 import { getStoreInfo } from "@/lib/catalog/repository";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -17,10 +18,23 @@ const bebas = Bebas_Neue({
 });
 
 const store = getStoreInfo();
+const title = `${store.name} | ${store.tagline}`;
+const description = `Peça online na ${store.name}: carvões, essências, narguilés, rosh e acessórios. Delivery e retirada em São Paulo.`;
 
 export const metadata: Metadata = {
-  title: `${store.name} | ${store.tagline}`,
-  description: `Peça online na ${store.name}: carvões, essências, narguilés, rosh e acessórios. Delivery e retirada em São Paulo.`,
+  metadataBase: siteUrl,
+  title,
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: store.name,
+    title,
+    description,
+    url: "/",
+  },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export const viewport: Viewport = {
