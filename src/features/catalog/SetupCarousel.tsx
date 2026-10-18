@@ -30,7 +30,7 @@ export function SetupCarousel({ photos }: { photos: StoreInfo["coverPhotos"] }) 
             alt={photo.alt}
             fill
             preload={index === 0}
-            sizes="100vw"
+            sizes="(min-width: 768px) 1px, 100vw"
             className="object-cover"
           />
         </div>
