@@ -3,6 +3,18 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { CloseIcon } from "./icons";
 
+let openSheetCount = 0;
+
+function lockBodyScroll() {
+  openSheetCount += 1;
+  document.body.style.overflow = "hidden";
+}
+
+function unlockBodyScroll() {
+  openSheetCount = Math.max(openSheetCount - 1, 0);
+  if (openSheetCount === 0) document.body.style.overflow = "";
+}
+
 type SheetProps = {
   open: boolean;
   onClose: () => void;
@@ -17,14 +29,13 @@ export function Sheet({ open, onClose, title, children, footer }: SheetProps) {
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) {
-      dialog.showModal();
-      document.body.style.overflow = "hidden";
+    if (!open) {
+      if (dialog.open) dialog.close();
+      return;
     }
-    if (!open && dialog.open) dialog.close();
-    return () => {
-      document.body.style.overflow = "";
-    };
+    if (!dialog.open) dialog.showModal();
+    lockBodyScroll();
+    return unlockBodyScroll;
   }, [open]);
 
   return (

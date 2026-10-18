@@ -8,7 +8,8 @@ import { Sheet } from "@/components/ui/Sheet";
 import { calculateTotals, type ResolvedLine } from "@/features/cart/cart-math";
 import type { ServiceType, StoreInfo } from "@/lib/catalog/types";
 import { formatBRL } from "@/lib/money";
-import { openExternal } from "@/lib/open-external";
+import { isDesktopPointer, openExternal } from "@/lib/open-external";
+import { WhatsAppConfirmSheet } from "./WhatsAppConfirmSheet";
 import {
   buildOrderMessage,
   buildWhatsAppUrl,
@@ -42,6 +43,7 @@ export function CheckoutSheet({ open, onClose, lines, store, onQuantityChange, o
   const [notes, setNotes] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
   const [sent, setSent] = useState(false);
+  const [pendingWhatsAppUrl, setPendingWhatsAppUrl] = useState<string | null>(null);
 
   const totals = calculateTotals(lines, service, store.services);
   const isDelivery = service === "delivery";
@@ -65,7 +67,17 @@ export function CheckoutSheet({ open, onClose, lines, store, onQuantityChange, o
       changeFor: changeFor.trim(),
       notes: notes.trim(),
     };
-    openExternal(buildWhatsAppUrl(store.whatsapp, buildOrderMessage(lines, totals, customer)));
+    const url = buildWhatsAppUrl(store.whatsapp, buildOrderMessage(lines, totals, customer));
+    if (isDesktopPointer()) {
+      setPendingWhatsAppUrl(url);
+      return;
+    }
+    sendToWhatsApp(url);
+  };
+
+  const sendToWhatsApp = (url: string) => {
+    openExternal(url);
+    setPendingWhatsAppUrl(null);
     setSent(true);
   };
 
@@ -106,150 +118,157 @@ export function CheckoutSheet({ open, onClose, lines, store, onQuantityChange, o
   }
 
   return (
-    <Sheet
-      open={open}
-      onClose={handleClose}
-      title="Seu pedido"
-      footer={
-        <div className="space-y-3">
-          <dl className="space-y-1 text-sm">
-            <Row label="Itens" value={formatBRL(totals.itemsCents)} />
-            {isDelivery && <Row label="Entrega" value={formatBRL(totals.deliveryFeeCents)} />}
-            <Row label="Total" value={formatBRL(totals.totalCents)} strong />
-          </dl>
-          {blockedByMinimum && (
-            <p className="rounded-lg border border-accent/40 bg-accent-soft px-3 py-2 text-xs text-fg">
-              Pedido mínimo para delivery é {formatBRL(store.services.delivery.minimumOrderCents)}. Faltam{" "}
-              <strong>{formatBRL(totals.missingForMinimumCents)}</strong>.
-            </p>
-          )}
-          <button
-            type="submit"
-            form="checkout-form"
-            disabled={blockedByMinimum || isEmpty}
-            className="flex h-13 w-full items-center justify-center gap-2 rounded-full bg-success text-sm font-semibold uppercase tracking-wide text-black transition hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <WhatsAppIcon className="text-xl" />
-            Enviar pedido no WhatsApp
-          </button>
-        </div>
-      }
-    >
-      <form id="checkout-form" onSubmit={handleSubmit} noValidate className="space-y-6 px-5 py-5">
-        <section className="space-y-3">
-          {isEmpty && <p className="py-6 text-center text-sm text-muted">Seu carrinho está vazio.</p>}
-          {lines.map(({ product, quantity, subtotalCents }) => (
-            <div key={product.id} className="flex items-center gap-3">
-              <div className="relative size-14 shrink-0 overflow-hidden rounded-lg bg-surface-2">
-                <Image src={product.image} alt="" fill sizes="56px" className="object-cover" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-xs font-semibold uppercase">{product.name}</p>
-                <p className="text-xs text-muted tabular-nums">{formatBRL(subtotalCents)}</p>
-              </div>
-              <QuantityStepper size="sm" value={quantity} onChange={(next) => onQuantityChange(product.id, next)} />
-            </div>
-          ))}
-        </section>
-
-        <Fieldset legend="Como você quer receber?">
-          <div className="grid grid-cols-3 gap-2">
-            {availableServices.map((option) => (
-              <label
-                key={option}
-                className={`relative flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 text-center text-xs font-medium transition ${
-                  service === option ? "border-accent bg-accent-soft text-fg" : "border-line-strong text-muted"
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="service"
-                  value={option}
-                  checked={service === option}
-                  onChange={() => setService(option)}
-                  className="sr-only"
-                />
-                {SERVICE_LABELS[option]}
-              </label>
-            ))}
+    <>
+      <WhatsAppConfirmSheet
+        open={pendingWhatsAppUrl !== null}
+        onCancel={() => setPendingWhatsAppUrl(null)}
+        onConfirm={() => pendingWhatsAppUrl && sendToWhatsApp(pendingWhatsAppUrl)}
+      />
+      <Sheet
+        open={open}
+        onClose={handleClose}
+        title="Seu pedido"
+        footer={
+          <div className="space-y-3">
+            <dl className="space-y-1 text-sm">
+              <Row label="Itens" value={formatBRL(totals.itemsCents)} />
+              {isDelivery && <Row label="Entrega" value={formatBRL(totals.deliveryFeeCents)} />}
+              <Row label="Total" value={formatBRL(totals.totalCents)} strong />
+            </dl>
+            {blockedByMinimum && (
+              <p className="rounded-lg border border-accent/40 bg-accent-soft px-3 py-2 text-xs text-fg">
+                Pedido mínimo para delivery é {formatBRL(store.services.delivery.minimumOrderCents)}. Faltam{" "}
+                <strong>{formatBRL(totals.missingForMinimumCents)}</strong>.
+              </p>
+            )}
+            <button
+              type="submit"
+              form="checkout-form"
+              disabled={blockedByMinimum || isEmpty}
+              className="flex h-13 w-full items-center justify-center gap-2 rounded-full bg-success text-sm font-semibold uppercase tracking-wide text-black transition hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <WhatsAppIcon className="text-xl" />
+              Enviar pedido no WhatsApp
+            </button>
           </div>
-        </Fieldset>
-
-        <Fieldset legend="Seus dados">
-          <Field label="Nome" error={errors.name}>
-            <input
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              autoComplete="name"
-              className={inputClass(errors.name)}
-            />
-          </Field>
-          {isDelivery && (
-            <>
-              <Field label="Endereço (rua, número, bairro)" error={errors.address}>
+        }
+      >
+        <form id="checkout-form" onSubmit={handleSubmit} noValidate className="space-y-6 px-5 py-5">
+          <section className="space-y-3">
+            {isEmpty && <p className="py-6 text-center text-sm text-muted">Seu carrinho está vazio.</p>}
+            {lines.map(({ product, quantity, subtotalCents }) => (
+              <div key={product.id} className="flex items-center gap-3">
+                <div className="relative size-14 shrink-0 overflow-hidden rounded-lg bg-surface-2">
+                  <Image src={product.image} alt="" fill sizes="56px" className="object-cover" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-xs font-semibold uppercase">{product.name}</p>
+                  <p className="text-xs text-muted tabular-nums">{formatBRL(subtotalCents)}</p>
+                </div>
+                <QuantityStepper size="sm" value={quantity} onChange={(next) => onQuantityChange(product.id, next)} />
+              </div>
+            ))}
+          </section>
+  
+          <Fieldset legend="Como você quer receber?">
+            <div className="grid grid-cols-3 gap-2">
+              {availableServices.map((option) => (
+                <label
+                  key={option}
+                  className={`relative flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 text-center text-xs font-medium transition ${
+                    service === option ? "border-accent bg-accent-soft text-fg" : "border-line-strong text-muted"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="service"
+                    value={option}
+                    checked={service === option}
+                    onChange={() => setService(option)}
+                    className="sr-only"
+                  />
+                  {SERVICE_LABELS[option]}
+                </label>
+              ))}
+            </div>
+          </Fieldset>
+  
+          <Fieldset legend="Seus dados">
+            <Field label="Nome" error={errors.name}>
+              <input
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                autoComplete="name"
+                className={inputClass(errors.name)}
+              />
+            </Field>
+            {isDelivery && (
+              <>
+                <Field label="Endereço (rua, número, bairro)" error={errors.address}>
+                  <input
+                    value={address}
+                    onChange={(event) => setAddress(event.target.value)}
+                    autoComplete="street-address"
+                    className={inputClass(errors.address)}
+                  />
+                </Field>
+                <Field label="Complemento / referência (opcional)">
+                  <input
+                    value={addressComplement}
+                    onChange={(event) => setAddressComplement(event.target.value)}
+                    className={inputClass()}
+                  />
+                </Field>
+              </>
+            )}
+          </Fieldset>
+  
+          <Fieldset legend="Pagamento na entrega/retirada">
+            <div className="grid grid-cols-3 gap-2">
+              {(Object.keys(PAYMENT_LABELS) as PaymentPreference[]).map((option) => (
+                <label
+                  key={option}
+                  className={`relative flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 text-center text-xs font-medium transition ${
+                    payment === option ? "border-accent bg-accent-soft text-fg" : "border-line-strong text-muted"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="payment"
+                    value={option}
+                    checked={payment === option}
+                    onChange={() => setPayment(option)}
+                    className="sr-only"
+                  />
+                  {PAYMENT_LABELS[option]}
+                </label>
+              ))}
+            </div>
+            {payment === "cash" && (
+              <Field label="Troco para quanto? (opcional)">
                 <input
-                  value={address}
-                  onChange={(event) => setAddress(event.target.value)}
-                  autoComplete="street-address"
-                  className={inputClass(errors.address)}
-                />
-              </Field>
-              <Field label="Complemento / referência (opcional)">
-                <input
-                  value={addressComplement}
-                  onChange={(event) => setAddressComplement(event.target.value)}
+                  value={changeFor}
+                  onChange={(event) => setChangeFor(event.target.value)}
+                  inputMode="decimal"
+                  placeholder="R$ 100"
                   className={inputClass()}
                 />
               </Field>
-            </>
-          )}
-        </Fieldset>
-
-        <Fieldset legend="Pagamento na entrega/retirada">
-          <div className="grid grid-cols-3 gap-2">
-            {(Object.keys(PAYMENT_LABELS) as PaymentPreference[]).map((option) => (
-              <label
-                key={option}
-                className={`relative flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 text-center text-xs font-medium transition ${
-                  payment === option ? "border-accent bg-accent-soft text-fg" : "border-line-strong text-muted"
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="payment"
-                  value={option}
-                  checked={payment === option}
-                  onChange={() => setPayment(option)}
-                  className="sr-only"
-                />
-                {PAYMENT_LABELS[option]}
-              </label>
-            ))}
-          </div>
-          {payment === "cash" && (
-            <Field label="Troco para quanto? (opcional)">
-              <input
-                value={changeFor}
-                onChange={(event) => setChangeFor(event.target.value)}
-                inputMode="decimal"
-                placeholder="R$ 100"
-                className={inputClass()}
-              />
-            </Field>
-          )}
-        </Fieldset>
-
-        <Field label="Observações (opcional)">
-          <textarea
-            value={notes}
-            onChange={(event) => setNotes(event.target.value)}
-            rows={2}
-            placeholder="Ex.: sabor alternativo, cor do rosh..."
-            className={`${inputClass()} h-auto resize-none py-3`}
-          />
-        </Field>
-      </form>
-    </Sheet>
+            )}
+          </Fieldset>
+  
+          <Field label="Observações (opcional)">
+            <textarea
+              value={notes}
+              onChange={(event) => setNotes(event.target.value)}
+              rows={2}
+              placeholder="Ex.: sabor alternativo, cor do rosh..."
+              className={`${inputClass()} h-auto resize-none py-3`}
+            />
+          </Field>
+        </form>
+      </Sheet>
+    </>
   );
 }
 
