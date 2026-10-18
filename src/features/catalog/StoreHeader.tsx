@@ -20,10 +20,10 @@ export function StoreHeader({ store }: { store: StoreInfo }) {
   return (
     <header className="relative overflow-hidden border-b border-line">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-60">
+        <div className="absolute inset-0 opacity-60 md:hidden">
           <SetupCarousel photos={store.coverPhotos} />
         </div>
-        <div className="absolute inset-0 bg-linear-to-b from-bg/10 via-bg/60 to-bg" />
+        <div className="absolute inset-0 bg-linear-to-b from-bg/10 via-bg/60 to-bg md:hidden" />
         <div className="absolute inset-x-0 top-[38%] h-px bg-linear-to-r from-transparent via-line-strong to-transparent" />
       </div>
 
