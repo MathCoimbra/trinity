@@ -30,6 +30,8 @@ describe("buildOrderMessage", () => {
       notes: "Tocar o interfone",
     });
 
+    expect(message.startsWith("Olá! Quero fazer um pedido:\n\n")).toBe(true);
+    expect(message).not.toMatch(/[\u{10000}-\u{10FFFF}]/u);
     expect(message).toContain("• 2x CARVÃO FUMAX 1KG — R$ 99,98");
     expect(message).toContain("Entrega: R$ 7,50");
     expect(message).toContain("*Total: R$ 107,48*");

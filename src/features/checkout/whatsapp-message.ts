@@ -47,7 +47,7 @@ export function buildOrderMessage(lines: ResolvedLine[], totals: CartTotals, cus
   totalLines.push(`*Total: ${formatBRL(totals.totalCents)}*`);
 
   const sections = [
-    "Olá! Quero fazer um pedido pela loja online 🛒",
+    "Olá! Quero fazer um pedido:",
     itemLines.join("\n"),
     totalLines.join("\n"),
     [`*Nome:* ${customer.name}`, ...serviceLines, paymentLine].join("\n"),
