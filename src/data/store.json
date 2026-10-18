@@ -6,12 +6,20 @@
   "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua+Saint+Gall%2C+239+-+Lauzane+Paulista%2C+S%C3%A3o+Paulo+-+SP",
   "coverPhotos": [
     {
-      "src": "/images/setup-lounge.webp",
-      "alt": "Lounge da Trinity Hookah com narguilés e luz neon"
+      "src": "/images/setup-vitrine.webp",
+      "alt": "Vitrine da Trinity Hookah com rosh coloridos sob luz neon"
     },
     {
-      "src": "/images/setup-balcao.webp",
-      "alt": "Balcão da Trinity Hookah com o logo em neon e produtos"
+      "src": "/images/setup-anubis.webp",
+      "alt": "Quadro de Anubis na parede da Trinity Hookah"
+    },
+    {
+      "src": "/images/setup-mangueiras.webp",
+      "alt": "Mangueiras e essências no balcão de madeira da Trinity Hookah"
+    },
+    {
+      "src": "/images/setup-lounge.webp",
+      "alt": "Narguilé no lounge da Trinity Hookah"
     }
   ],
   "socials": {

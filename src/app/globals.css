@@ -63,7 +63,7 @@ body {
     scroll-behavior: auto;
   }
 
-  *:not(.boot-overlay, .boot-overlay *),
+  *:not(.boot-overlay, .boot-overlay *, .setup-slide),
   *:not(.boot-overlay)::before,
   *:not(.boot-overlay)::after {
     animation-duration: 0.01ms !important;
