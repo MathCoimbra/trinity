@@ -23,6 +23,7 @@ export type StoreInfo = {
   whatsapp: string;
   address: string;
   mapsUrl: string;
+  coverPhotos: { src: string; alt: string }[];
   socials: { instagram: string; facebook: string; tiktok: string };
   services: {
     delivery: { enabled: boolean; minimumOrderCents: number; feeCents: number };

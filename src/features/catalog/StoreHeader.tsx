@@ -1,11 +1,8 @@
-import Image from "next/image";
 import { FacebookIcon, InstagramIcon, PinIcon, TikTokIcon } from "@/components/ui/icons";
 import { TrinityLogo } from "@/components/ui/TrinityLogo";
 import type { StoreInfo } from "@/lib/catalog/types";
 import { formatBRL } from "@/lib/money";
-
-const COVER_IMAGE =
-  "https://assets.olaclick.app/companies/backgrounds/a42865d0-e76b-46cc-9661-eba09960c922.webp";
+import { SetupCarousel } from "./SetupCarousel";
 
 export function StoreHeader({ store }: { store: StoreInfo }) {
   const socialLinks = [
@@ -23,8 +20,10 @@ export function StoreHeader({ store }: { store: StoreInfo }) {
   return (
     <header className="relative overflow-hidden border-b border-line">
       <div className="absolute inset-0">
-        <Image src={COVER_IMAGE} alt="" fill preload sizes="100vw" className="object-cover opacity-35" />
-        <div className="absolute inset-0 bg-linear-to-b from-bg/40 via-bg/80 to-bg" />
+        <div className="absolute inset-0 opacity-60">
+          <SetupCarousel photos={store.coverPhotos} />
+        </div>
+        <div className="absolute inset-0 bg-linear-to-b from-bg/10 via-bg/60 to-bg" />
         <div className="absolute inset-x-0 top-[38%] h-px bg-linear-to-r from-transparent via-line-strong to-transparent" />
       </div>
 

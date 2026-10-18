@@ -92,3 +92,25 @@ dialog.sheet[open]::backdrop {
     opacity: 0;
   }
 }
+
+.setup-slide {
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+}
+
+.setup-slide-active {
+  opacity: 1;
+}
+
+.setup-slide-active img {
+  animation: setup-drift 7.8s ease-out both;
+}
+
+@keyframes setup-drift {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}

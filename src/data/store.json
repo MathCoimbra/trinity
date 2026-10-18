@@ -4,14 +4,32 @@
   "whatsapp": "5511945590209",
   "address": "Rua Saint Gall, 239 - Lauzane Paulista, São Paulo - SP, 02440-070",
   "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Rua+Saint+Gall%2C+239+-+Lauzane+Paulista%2C+S%C3%A3o+Paulo+-+SP",
+  "coverPhotos": [
+    {
+      "src": "/images/setup-lounge.webp",
+      "alt": "Lounge da Trinity Hookah com narguilés e luz neon"
+    },
+    {
+      "src": "/images/setup-balcao.webp",
+      "alt": "Balcão da Trinity Hookah com o logo em neon e produtos"
+    }
+  ],
   "socials": {
     "instagram": "https://www.instagram.com/trinityhookah",
     "facebook": "https://www.facebook.com/trinityhookah",
     "tiktok": "https://www.tiktok.com/@trinityhookah"
   },
   "services": {
-    "delivery": { "enabled": true, "minimumOrderCents": 2000, "feeCents": 750 },
-    "pickup": { "enabled": true },
-    "dineIn": { "enabled": true }
+    "delivery": {
+      "enabled": true,
+      "minimumOrderCents": 2000,
+      "feeCents": 750
+    },
+    "pickup": {
+      "enabled": true
+    },
+    "dineIn": {
+      "enabled": true
+    }
   }
 }
