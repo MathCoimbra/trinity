@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { CSSProperties, SVGProps } from "react";
 
 export const PYRAMID_FACES = [
   { id: "left", points: "50,4 6,88 58,70", fill: "#8d8d94" },
@@ -23,6 +23,25 @@ export function TrinityMark(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+const WORDMARK_MASK_URL = "url(/images/trinity-wordmark.png)";
+
+export const wordmarkMaskStyle: CSSProperties = {
+  aspectRatio: "1200 / 219",
+  backgroundColor: "currentColor",
+  maskImage: WORDMARK_MASK_URL,
+  WebkitMaskImage: WORDMARK_MASK_URL,
+  maskSize: "contain",
+  WebkitMaskSize: "contain",
+  maskRepeat: "no-repeat",
+  WebkitMaskRepeat: "no-repeat",
+  maskPosition: "center",
+  WebkitMaskPosition: "center",
+};
+
+export function TrinityWordmark({ className = "" }: { className?: string }) {
+  return <span role="img" aria-label="Trinity" className={`block ${className}`} style={wordmarkMaskStyle} />;
+}
+
 type TrinityLogoProps = {
   className?: string;
   showWordmark?: boolean;
@@ -30,13 +49,9 @@ type TrinityLogoProps = {
 
 export function TrinityLogo({ className = "", showWordmark = true }: TrinityLogoProps) {
   return (
-    <span className={`inline-flex flex-col items-center gap-1 ${className}`}>
-      <TrinityMark className="h-auto w-full" />
-      {showWordmark && (
-        <span className="font-display text-[1.15em] leading-none tracking-[0.28em] text-[#cfcfd4]">
-          TRINITY
-        </span>
-      )}
+    <span className={`inline-flex flex-col items-center gap-[12%] ${className}`}>
+      <TrinityMark className="h-auto w-[78%]" />
+      {showWordmark && <TrinityWordmark className="w-full text-muted" />}
     </span>
   );
 }
