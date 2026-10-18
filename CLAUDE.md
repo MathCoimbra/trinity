@@ -7,6 +7,7 @@ Loja online da Trinity Hookah (tabacaria/narguilé), substituindo o cardápio da
 - Next.js (App Router) + TypeScript + Tailwind CSS, Zustand para o carrinho, Vitest para testes.
 - `npm run dev` · `npm run build` · `npm run lint` · `npm test`
 - Deploy na Vercel (push na `main` = produção; branches geram previews).
+- URL absoluta do site (canonical, Open Graph, sitemap) vem de `src/lib/site-url.ts`: `NEXT_PUBLIC_SITE_URL` se definida, senão `VERCEL_PROJECT_PRODUCTION_URL` (automática na Vercel). Ao ligar o domínio próprio, definir `NEXT_PUBLIC_SITE_URL` na Vercel.
 
 ## Arquitetura
 
